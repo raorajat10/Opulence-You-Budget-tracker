@@ -1,3 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+
+@layer utilities {
+
+.bg-aurora-gold {
+   background: linear-gradient(
+    120deg, /* dark gold */
+    #dbbe5d,  /* gold */
+    #f7e7a9,  /* light gold */
+    #b697ca   /* royal purple */
+  );
+  background-size: 300% 300%;
+  animation: auroraGold 10s ease-in-out infinite;
+}
+
+@keyframes auroraGold {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+  .bg-gif {
+    background-image: url('/bg-gif.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+/* Golden shimmering text effect */
+.opulence-title {
+  font-family: "Bowlby One SC", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+
+  background: linear-gradient(45deg, #d4af37, #f7e7a9, #b8860b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: gold-sparkle 3s infinite linear;
+}
+
+/* Moving sparkle animation */
+@keyframes gold-sparkle {
+  0% {
+    background-position: 0% 50%;
+    filter: brightness(0.95);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.25);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: brightness(0.95);
+  }
+}
+
+/* Optional glowing shine sweep across text */
+.opulence-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 120%;
+  /* background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  ); */
+  transform: skewX(-20deg);
+  animation: shine 2.5s infinite ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    left: -120%;
+  }
+  60% {
+    left: 120%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+ @keyframes floating {
+          0% { transform: translate(-50%, 0) rotate(-12deg); }
+          50% { transform: translate(-50%, -15px) rotate(-12deg); }
+          100% { transform: translate(-50%, 0) rotate(-12deg); }
+        }
+
+        .animate-floating {
+          animation: floating 3.5s ease-in-out infinite;
+        }
+
+  @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+        }
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(24px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-up {
+          animation: fade-up 1s ease-out forwards;
+        }
+
+}
+ 

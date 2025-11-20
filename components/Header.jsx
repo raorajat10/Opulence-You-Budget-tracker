@@ -5,46 +5,71 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
-import Image from 'next/image'
+
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
-import { LayoutDashboard } from 'lucide-react'
+import { LayoutDashboard, PenBox } from 'lucide-react'
 
 const Header = () => {
   return (
-    <div className='fixed top-0 w-full bg-white-100/80 backdrop-blur-md z-50 border-b'> 
+    <div className="
+      fixed top-4 left-1/2 -translate-x-1/2
+      w-full max-w-6xl
+      backdrop-blur-xl bg-[#152517]/60
+      border border-[#316959]/40 shadow-lg
+      z-50 rounded-2xl px-6
+    ">
       <nav className='container mx-auto px-4 py-4 flex items-center justify-between'>
+        
         <Link href="/">
-        <Image src={'/new-logo.png'} width={200} height={60} alt="Logo"
-        className='h-12 w-auto object-contain'/></Link>
-          
-     <div>   <SignedOut>
-              <SignInButton forceRedirectUrl='/dashboard'>
-                <Button variant='outline'>Log In</Button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <Link href={"/dashboard"} className='text-gray-600 hover:text-yellow-200'>
-                <Button variant='outline'>
-                  <LayoutDashboard size={18}/>
-                  <span className='hidden md:inline'>Dashboard</span>
-                </Button>
-              </Link>
-              <Link href={"/transaction/create"}>
-                <Button variant='outline'>
-                  <LayoutDashboard size={18}/>
-                  <span className='hidden md:inline'>Dashboard</span>
-                </Button>
-              </Link>
-            </SignedIn>
+          <h1 className="text-[#5bb66e] text-xl md:text-2xl font-bold">
+            Opulence
+          </h1>
+        </Link>
 
-            <SignedIn>
-              <UserButton/>
-            </SignedIn></div>
-            
-             </nav>
-            </div>
+        <div className='flex items-center space-x-4'>   
+
+          <SignedOut>
+            <SignInButton forceRedirectUrl='/dashboard'>
+              <Button variant='outline' className="border-[#5bb66e] text-[#5bb66e] hover:bg-[#5bb66e] hover:text-white">
+                Log In
+              </Button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <Link href={"/dashboard"}>
+              <Button 
+                variant='outline' 
+                className="text-[#316959] border-[#316959] hover:bg-[#316959] hover:text-white"
+              >
+                <LayoutDashboard size={18}/>
+                <span className='font-semibold hidden md:inline'>Dashboard</span>
+              </Button>
+            </Link>
+
+            <Link href={"/transaction/create"}>
+              <Button className='bg-[#5bb66e] text-white hover:bg-[#0d5c42]'>
+                <PenBox size={18}/>
+                <span className='hidden md:inline'>Add Transaction</span>
+              </Button>
+            </Link>
+          </SignedIn>
+
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  avatar: "w-10 h-10 border-4 border-[#5bb66e]"
+                }
+              }}
+            />
+          </SignedIn>
+
+        </div>
+      </nav>
+    </div>
   )
 }
 
